@@ -17,3 +17,10 @@ source <your-environment-name>/bin/activate
 # install package
 pip3 install -r requirements.txt  # install
 ```
+
+### Run Streamlit App
+To run streamlit app, type following script in your terminal (make sure you in the pest-recognition-app directory).
+```bash
+streamlit run app.py
+```
+Wait until the browser open and showed the web app. Or if the web don't show, you can click the link that appear in your terminal to open the web app. You can try to do inference using image from `image` directory. 

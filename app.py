@@ -2,8 +2,8 @@ import streamlit as st
 from PIL import Image
 from classifier import predict
 
-st.set_option('deprecation.showfileUploaderEncoding', False)
 
+st.set_option('deprecation.showfileUploaderEncoding', False)
 st.title("Pest Classification App")
 st.write("")
 

@@ -1,8 +1,9 @@
-from torchvision import models, transforms
 import torch
 import string
 from torch import nn
 from PIL import Image
+from torchvision import models, transforms
+
 
 class InsectPestClassifier(nn.Module):
     def __init__(self):

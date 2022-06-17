@@ -1,13 +1,13 @@
 from torchvision import models, transforms
 import torch
+import string
 from torch import nn
 from PIL import Image
 
 class InsectPestClassifier(nn.Module):
     def __init__(self):
         super().__init__()
-        self.mobilenet = models.mobilenet_v2(pretrained=True)
-        self.freeze()
+        self.mobilenet = models.mobilenet_v2()
         self.mobilenet.classifier = nn.Sequential(
             nn.Linear(1280, 1024),
             nn.ReLU(),
@@ -26,22 +26,12 @@ class InsectPestClassifier(nn.Module):
         
     def forward(self, x):
         return self.mobilenet(x)
-    
-    def freeze(self):
-        for param in self.mobilenet.parameters():
-            param.requires_grad = False
-        
-    def unfreeze(self):
-        for param in self.mobilenet.parameters():
-            param.requires_grad = True
 
 
 def predict(image_path):
     device = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
     
-    
     model = InsectPestClassifier().to(device)
-
     weights = torch.load('model/cutmix_model_ft_epoch_241-260.pth', map_location=torch.device('cpu'))
     model.load_state_dict(weights['model_state_dict'])
     model = model.to(device)
@@ -62,7 +52,7 @@ def predict(image_path):
     out = model(batch_t)
 
     with open('classes.txt') as f:
-        classes = [line.strip() for line in f.readlines()]
+        classes = [string.capwords(line[3:]).strip() for line in f.readlines()]
 
     prob = torch.nn.functional.softmax(out, dim=1)[0] * 100
     _, indices = torch.sort(out, descending=True)

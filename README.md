@@ -20,7 +20,7 @@ pip3 install -r requirements.txt
 ```
 
 ### Run Streamlit App
-To run streamlit app, type following script in your terminal (make sure you in the pest-recognition-app directory).
+To run streamlit app, type following script in your terminal _(make sure you in the pest-recognition-app directory)_.
 ```bash
 streamlit run app.py
 ```

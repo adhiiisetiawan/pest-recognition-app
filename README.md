@@ -3,9 +3,10 @@
 ## Quick Start Examples
 
 ### Install
-Clone repo and install package in your environment.
+Clone this repository and install package in your environment.
 ```bash
-git clone https://github.com/adhiiisetiawan/pest-recognition-app.git  # clone
+# clone repository
+git clone https://github.com/adhiiisetiawan/pest-recognition-app.git  
 cd pest-recognition-app
 
 # create your environment
@@ -15,7 +16,7 @@ python3 -m venv <your-environment-name>
 source <your-environment-name>/bin/activate
 
 # install package
-pip3 install -r requirements.txt  # install
+pip3 install -r requirements.txt
 ```
 
 ### Run Streamlit App
